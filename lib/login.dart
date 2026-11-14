@@ -13,20 +13,20 @@ class _LoginState extends State<Login> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void click() async {
+  Future<void> click() async {
     final username = usernameController.text;
     final pass = passwordController.text;
 
-    if (username == "riswan" && pass == "123") {
+    if (username.isNotEmpty && pass.isNotEmpty) {
       final save = await SharedPreferences.getInstance();
 
       await save.setBool("login", true);
-
+      await save.setString("username", username);
       if (!mounted) return;
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Home()),
+        MaterialPageRoute(builder: (context) => Home(username: username)),
       );
     }
   }
