@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
             TextField(
               controller: usernameController,
               decoration: InputDecoration(
-                hintText: "enter your ",
+                hintText: "enter your name",
                 border: OutlineInputBorder(),
               ),
             ),
